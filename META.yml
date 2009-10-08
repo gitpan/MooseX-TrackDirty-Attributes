@@ -1,0 +1,39 @@
+---
+abstract: 'Track dirtied attributes '
+author:
+  - 'Chris Weyl <cweyl@alumni.drew.edu>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0.92
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: lgpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: MooseX-TrackDirty-Attributes
+no_index:
+  directory:
+    - inc
+    - t
+    - xt
+provides:
+  MooseX::TrackDirty::Attributes:
+    file: lib/MooseX/TrackDirty/Attributes.pm
+    version: 0.01
+  MooseX::TrackDirty::Attributes::Role::Class:
+    file: lib/MooseX/TrackDirty/Attributes.pm
+  MooseX::TrackDirty::Attributes::Role::Meta::Attribute:
+    file: lib/MooseX/TrackDirty/Attributes.pm
+  MooseX::TrackDirty::Attributes::Role::Meta::Class:
+    file: lib/MooseX/TrackDirty/Attributes.pm
+requires:
+  Moose: 0.88
+  namespace::autoclean: 0.08
+resources:
+  homepage: http://github.com/RsrchBoy/moosex-trackdirty-attributes/tree
+  license: http://opensource.org/licenses/lgpl-license.php
+  repository: git://github.com/RsrchBoy/moosex-trackdirty-attributes.git
+version: 0.01
