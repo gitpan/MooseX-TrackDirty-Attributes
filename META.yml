@@ -22,7 +22,7 @@ no_index:
 provides:
   MooseX::TrackDirty::Attributes:
     file: lib/MooseX/TrackDirty/Attributes.pm
-    version: 0.01
+    version: 0.02
   MooseX::TrackDirty::Attributes::Role::Class:
     file: lib/MooseX/TrackDirty/Attributes.pm
   MooseX::TrackDirty::Attributes::Role::Meta::Attribute:
@@ -30,10 +30,10 @@ provides:
   MooseX::TrackDirty::Attributes::Role::Meta::Class:
     file: lib/MooseX/TrackDirty/Attributes.pm
 requires:
-  Moose: 0.88
+  Moose: 0.90
   namespace::autoclean: 0.08
 resources:
   homepage: http://github.com/RsrchBoy/moosex-trackdirty-attributes/tree
   license: http://opensource.org/licenses/lgpl-license.php
   repository: git://github.com/RsrchBoy/moosex-trackdirty-attributes.git
-version: 0.01
+version: 0.02

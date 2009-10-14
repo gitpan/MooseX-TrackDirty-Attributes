@@ -58,7 +58,7 @@ $one->clear_one;
 ok !$one->one_is_dirty, 'one is not dirty after clearing';
 
 is $one->one, 'sparkley!', 'builds correctly';
-ok !$one->one_is_dirty, 'one is not dirty after builing';
+ok !$one->one_is_dirty, 'one is not dirty after building';
 
 done_testing;
 

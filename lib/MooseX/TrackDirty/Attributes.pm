@@ -20,11 +20,11 @@ MooseX::TrackDirty::Attributes - Track dirtied attributes
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -62,13 +62,23 @@ state by invoking its clearer.
 
 =head1 CAVEAT
 
-We don't yet trigger a cascade clear on a master attribute's value being set
-through a setter/accessor accessor.  This will likely be available as an
-option in the not-too-distant-future.
+Note that this is fairly crude; with few exceptions we can only track
+dirtiness at the very first level.  That is, if you have an attribute that is
+a HashRef, we can tell that the _attribute_ is dirty iff the actual HashRef
+ref changes, but not if the HashRef's keys/values change. e.g.
+$self->hashref({ new => 'hash' }) would render the 'hashref' attribute dirty,
+but $self->hashref->{foo} = 'bar' would not.
+
+=head2 CAVEAT TO THE CAVEAT
+
+Some attributes are designed to be used at this level; namely those that
+employ an attribute helper trait to interface with the lower-level bits
+directly.  Support for tracking dirtiness at that level is in the works;
+right now Array and Hash trait helpers are tracked.
 
 =head1 ATTRIBUTE OPTIONS
 
-We install an attribute metaclass trait that provides two additional
+We install an attribute metaclass trait that provides three additional
 atttribute options, as well as wraps the generated clearer and writer/accessor 
 methods of the attribute.  By default, use'ing this module causes this
 trait to be installed for all attributes defined in the package.
@@ -86,6 +96,15 @@ If set, create a "dirtiness accessor".  Default is to not create one.  If
 lazy_build is specified, a method is generated with "foo_is_dirty", where foo
 is the attribute name.
 
+=item track_attribute_helpers_dirty => (0|1)
+
+If true (the default), we also track any "writing" attribute helper methods
+installed by the native attribute traits.  (e.g. Hash, Array, etc.)
+
+Note that this goes deeper than general "dirtiness" tracking.  w/o tracking
+attribute helpers, we only mark an attribute as dirty when a setter or
+accessor (used as a setter) is invoked.
+
 =back
 
 =cut
@@ -98,6 +117,25 @@ is the attribute name.
     has track_dirty     => (is => 'rw', isa => 'Bool', default => 1);
     has dirty           => (is => 'ro', isa => 'Str',  predicate => 'has_dirty');
 
+    has track_attribute_helpers_dirty => 
+        (is => 'rw', isa => 'Bool', default => 1);
+
+    # There doesn't seem to be an easy way to get around writing this all out
+    my %sullies = (
+        # note we handle "accessor" separately 
+        'Hash'  => [ qw{ set clear delete } ],
+        'Array' => [ qw{ push pop unshift shift set clear insert splice delete
+                         sort_in_place } ],
+        # FIXME ...
+    );
+
+    # wrap our internal clearer
+    after clear_value => sub {
+        my ($self, $instance) = @_;
+
+        $instance->_mark_clean($self->name) if $self->track_dirty;
+    };
+
     after install_accessors => sub {  
         my ($self, $inline) = @_;
 
@@ -107,18 +145,15 @@ is the attribute name.
         my $class = $self->associated_class;
         my $name  = $self->name;
 
-        # our is_dirty "accessor"
         ### is_dirty: $self->dirty || ''
         $class->add_method($self->dirty, sub { shift->_is_dirty($name) }) 
             if $self->has_dirty;
 
-        # if we're cleared, we're clean again
-        my $clearer_name = $self->has_clearer ? $self->clearer : 'clear_value';
         $class->add_after_method_modifier(
-            $clearer_name => sub { shift->_mark_clean($name) }
-        );
+            $self->clearer => sub { shift->_mark_clean($name) }
+        ) if $self->has_clearer;
 
-        # if we're set, we're dirty (cach both writer/accessor
+        # if we're set, we're dirty (cach both writer/accessor)
         $class->add_after_method_modifier(
             $self->writer => sub { shift->_mark_dirty($name) }
         ) if $self->has_writer;
@@ -128,8 +163,61 @@ is the attribute name.
         ) if $self->has_accessor;
 
         return;
+    };
 
-        #$self->associated_class->add_after_method_modifier($self->clearer, sub { 
+    after install_delegation => sub {
+        my ($self, $inline) = @_;
+ 
+        # check for native hashes if we can do them...
+        return if 
+            !$self->has_handles || 
+            !$self->track_attribute_helpers_dirty
+            ;
+
+        my @does = grep { $self->does($_) } keys %sullies;
+
+        ##### @does
+        return unless scalar @does;
+        my $does = shift @does;
+
+        # we're not going through _canonicalize_handles here, as, well, it's
+        # private and I'm not sure it'll buy us anything here... right?
+        my %handles = %{ $self->handles };
+        my %writers = map { $_ => 1 } @{$sullies{$does}};
+        my $name    = $self->name;
+        my $dirty   = sub { shift->_mark_dirty($name) };
+        my $class   = $self->associated_class;
+
+        # method name -> operation (provided method type)
+        #### %handles
+        #### %writers
+        
+        for my $method_name (keys %handles) {
+
+            #### looking at: $method_name
+            my $op = $handles{$method_name};
+
+            #### writer?: $writers{$op} 
+            $class->add_after_method_modifier($method_name => $dirty)
+                if $writers{$op};
+
+            # accessor _might_ be used as a writer
+            $class->add_after_method_modifier($method_name 
+                => sub { $_[0]->_mark_dirty($name) if defined $_[2] } 
+            ) if $op eq 'accessor';
+        }
+
+        return;
+    };
+
+    before _process_options => sub {
+        my ($self, $name, $options) = @_;
+
+        ### before _process_options: $name
+        $options->{dirty} = $name.'_is_dirty' 
+            unless exists $options->{dirty} || !$options->{lazy_build};
+
+        return;
     };
 }
 {
@@ -137,20 +225,11 @@ is the attribute name.
     use namespace::autoclean;
     use Moose::Role;
 
-    around add_attribute => sub {
-        my $next = shift;
-        my $self = shift;
-        my ($what, %opts) = @_;
+    # FIXME implement!
+    sub get_all_dirtiable_attributes { warn }
 
-        ### in class role: $opts{lazy_build}
-        $opts{dirty} = $what.'_is_dirty' 
-            unless exists $opts{dirty} || !$opts{lazy_build};
-
-        $self->$next($what, %opts);
-    };
-
-    #sub get_all_dirty_attributes { warn }
 }
+
 {
     package MooseX::TrackDirty::Attributes::Role::Class;
     use namespace::autoclean;
@@ -177,7 +256,6 @@ is the attribute name.
     sub __build_track_dirty { { } }
     sub _mark_dirty { shift->__set_dirty(shift, 1) }
 }
-# can we prevent the clearer from being inlined?  Do we need to?  Are we?
 
 sub init_meta {
     shift;
