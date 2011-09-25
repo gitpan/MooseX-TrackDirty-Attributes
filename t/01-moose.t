@@ -1,24 +1,4 @@
-#!/usr/bin/perl
-#############################################################################
-#
-# Author:  Chris Weyl (cpan:RSRCHBOY), <cweyl@alumni.drew.edu>
-# Company: No company, personal work
-# Created: 10/06/2009
-#
-# Copyright (c) 2009  <cweyl@alumni.drew.edu>
-#
-# This library is free software; you can redistribute it and/or
-# modify it under the terms of the GNU Lesser General Public
-# License as published by the Free Software Foundation; either
-# version 2.1 of the License, or (at your option) any later version.
-#
-#############################################################################
-
-=head1 NAME
-
-01-moose.t - Test (meta) class construction 
-
-=head1 DESCRIPTION 
+=head1 DESCRIPTION
 
 This test exercises the Moose bits (meta, role application, etc).
 
@@ -27,51 +7,44 @@ This test exercises the Moose bits (meta, role application, etc).
 use strict;
 use warnings;
 
-#use English qw{ -no_match_vars };  # Avoids regex performance penalty
+{
+    package TestClass;
+
+    use Moose;
+    use MooseX::TrackDirty::Attributes;
+    use namespace::autoclean;
+
+    has one => (
+        traits     => [TrackDirty],
+        is         => 'rw',
+
+        original_value => 'original_value_of_one',
+    );
+
+    sub _build_one { 'sparkley!' }
+
+    has lazy => (is => 'rw', lazy_build => 1);
+
+}
 
 use Test::More 0.92;
 use Test::Moose;
 
-use FindBin;
-use lib "$FindBin::Bin/lib";
-use test1; 
+with_immutable {
+    meta_ok 'TestClass';
+    has_attribute_ok 'TestClass', 'one';
+    can_ok  'TestClass', 'one_is_dirty', 'original_value_of_one';
 
-my $one = test1->new;
+    my $one_att_meta = TestClass->meta->get_attribute('one');
 
-isa_ok $one, 'test1';
-meta_ok $one;
-does_ok $one, 'MooseX::TrackDirty::Attributes::Role::Class';
-has_attribute_ok $one, '__track_dirty';
+    does_ok $one_att_meta, 'MooseX::TrackDirty::Attributes::Trait::Attribute';
+    has_attribute_ok $one_att_meta, 'is_dirty';
 
-done_testing 4;
+    does_ok
+        $one_att_meta->accessor_metaclass,
+        'MooseX::TrackDirty::Attributes::Trait::Method::Accessor',
+        ;
 
-__END__
+} 'TestClass';
 
-=head1 AUTHOR
-
-Chris Weyl  <cweyl@alumni.drew.edu>
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright (c) 2009 Chris Weyl <cweyl@alumni.drew.edu>
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the 
-
-     Free Software Foundation, Inc.
-     59 Temple Place, Suite 330
-     Boston, MA  02111-1307  USA
-
-=cut
-
-
+done_testing;
