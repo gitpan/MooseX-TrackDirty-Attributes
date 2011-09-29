@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '0.91';
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '1.000';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -228,7 +228,7 @@ MooseX::TrackDirty::Attributes::Trait::Attribute - Track dirtied attributes
 
 =head1 VERSION
 
-version 0.91
+version 1.000
 
 =head1 DESCRIPTION
 

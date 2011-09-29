@@ -34,7 +34,7 @@ resources:
   bugtracker: https://github.com/RsrchBoy/moosex-trackdirty-attributes/issues
   homepage: http://metacpan.org/release/MooseX-TrackDirty-Attributes/
   repository: git://github.com/RsrchBoy/moosex-trackdirty-attributes.git
-version: 0.91
+version: 1.000
 x_Dist_Zilla:
   plugins:
     -
