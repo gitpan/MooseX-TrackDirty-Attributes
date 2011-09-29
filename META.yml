@@ -10,10 +10,11 @@ build_requires:
   Test::Moose: 0
   Test::More: 0.94
   Test::UseAllModules: 0
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150'
 license: lgpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -26,13 +27,14 @@ requires:
   MooseX::AttributeShortcuts: 0
   MooseX::Types::Perl: 0
   namespace::autoclean: 0
-  perl: v5.10
+  perl: 5.006
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://github.com/RsrchBoy/moosex-trackdirty-attributes/issues
+  homepage: http://metacpan.org/release/MooseX-TrackDirty-Attributes/
   repository: git://github.com/RsrchBoy/moosex-trackdirty-attributes.git
-version: 0.90
+version: 0.91
 x_Dist_Zilla:
   plugins:
     -
@@ -238,5 +240,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.300002

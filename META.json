@@ -4,7 +4,7 @@
       "Chris Weyl <cweyl@alumni.drew.edu>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "lgpl_2_1"
    ],
@@ -27,7 +27,7 @@
             "MooseX::AttributeShortcuts" : 0,
             "MooseX::Types::Perl" : 0,
             "namespace::autoclean" : 0,
-            "perl" : "v5.10.0",
+            "perl" : "5.006",
             "strict" : 0,
             "warnings" : 0
          }
@@ -40,22 +40,24 @@
             "Scalar::Util" : 0,
             "Test::Moose" : 0,
             "Test::More" : "0.94",
-            "Test::UseAllModules" : 0
+            "Test::UseAllModules" : 0,
+            "perl" : "5.004"
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/RsrchBoy/moosex-trackdirty-attributes/issues"
       },
+      "homepage" : "http://metacpan.org/release/MooseX-TrackDirty-Attributes/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/RsrchBoy/moosex-trackdirty-attributes.git",
          "web" : "https://github.com/RsrchBoy/moosex-trackdirty-attributes"
       }
    },
-   "version" : "0.90",
+   "version" : "0.91",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -312,7 +314,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "1"
+            "is_trial" : "0"
          },
          "version" : "4.300002"
       }
