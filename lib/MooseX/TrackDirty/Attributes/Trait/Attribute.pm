@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '1.000';
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '1.900'; # TRIAL
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -17,7 +17,23 @@ package MooseX::TrackDirty::Attributes::Trait::Attribute;
 use Moose::Role;
 use namespace::autoclean;
 use MooseX::Types::Perl ':all';
-use MooseX::AttributeShortcuts;
+use MooseX::AttributeShortcuts 0.008;
+
+use Moose::Util::MetaRole;
+use MooseX::TrackDirty::Attributes::Util ':all';
+use MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait ();
+
+# roles to help us track / do-the-right-thing when native traits are also used
+Moose::Util::MetaRole::apply_metaroles(
+    for            => __PACKAGE__->meta,
+    role_metaroles => {
+        role                    => [ trait_for 'Role' ],
+        application_to_class    => [ ToClass          ],
+        application_to_role     => [ ToRole           ],
+        application_to_instance => [ ToInstance       ],
+    },
+);
+
 
 # debugging
 #use Smart::Comments '###', '####';
@@ -85,9 +101,8 @@ sub _inline_is_dirty_get {
     return $mi->inline_get_slot_value($instance, $self->dirty_slot, $value);
 }
 
-override _inline_instance_set => sub {
-    my $self = shift;
-    my ($instance, $value) = @_;
+sub _inline_set_dirty_slot_if_dirty {
+    my ($self, $instance, $value) = @_;
     # set dirty_slot from value_slot if dirty_slot is not init and value_slot value_slot is
 
     ### $instance
@@ -117,7 +132,15 @@ override _inline_instance_set => sub {
         "   if $value_slot_exists && !$dirty_slot_exists;"
         ;
 
-    $code = "do { $code; " . super . " }";
+    return $code;
+}
+
+around _inline_instance_set => sub {
+    my ($orig, $self) = (shift, shift);
+    my ($instance, $value) = @_;
+
+    my $code = $self->_inline_set_dirty_slot_if_dirty(@_);
+    $code = "do { $code; " . $self->$orig(@_) . " }";
 
     ### $code
     return $code;
@@ -181,10 +204,13 @@ override accessor_metaclass => sub {
     return $classname;
 };
 
-after install_accessors => sub {
+after install_accessors => sub { shift->install_trackdirty_accessors(@_) };
+
+sub install_trackdirty_accessors {
     my ($self, $inline) = @_;
     my $class = $self->associated_class;
 
+    ### in install_accessors...
     $class->add_method(
         $self->_process_accessors('is_dirty' => $self->is_dirty, $inline)
     ) if $self->is_dirty;
@@ -195,7 +221,9 @@ after install_accessors => sub {
     return;
 };
 
-before remove_accessors => sub {
+before remove_accessors => sub { shift->remove_trackdirty_accessors(@_) };
+
+sub remove_trackdirty_accessors {
     my $self = shift @_;
 
     # stolen from Class::MOP::Attribute
@@ -222,13 +250,15 @@ before remove_accessors => sub {
 
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Attribute - Track dirtied attributes
 
 =head1 VERSION
 
-version 1.000
+This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Attribute - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 
@@ -237,7 +267,33 @@ anything with it; you want L<MooseX::TrackDirty::Attributes>.
 
 =head1 SEE ALSO
 
+Please see those modules/websites for more information related to this module.
+
+=over 4
+
+=item *
+
+L<MooseX::TrackDirty::Attributes|MooseX::TrackDirty::Attributes>
+
+=item *
+
 L<MooseX::TrackDirty::Attributes>
+
+=back
+
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/moosex-trackdirty-attributes>
+and may be cloned from L<git://github.com/RsrchBoy/moosex-trackdirty-attributes.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/moosex-trackdirty-attributes/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 

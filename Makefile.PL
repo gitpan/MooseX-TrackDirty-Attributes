@@ -12,14 +12,12 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Track dirtied attributes",
   "AUTHOR" => "Chris Weyl <cweyl\@alumni.drew.edu>",
   "BUILD_REQUIRES" => {
-    "Carp" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
-    "Scalar::Util" => 0,
+    "Moose::Util" => 0,
     "Test::Moose" => 0,
-    "Test::More" => "0.94",
-    "Test::UseAllModules" => 0,
-    "perl" => "5.004"
+    "Test::Moose::More" => 0,
+    "Test::More" => "0.92"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -29,18 +27,21 @@ my %WriteMakefileArgs = (
   "LICENSE" => "lgpl",
   "NAME" => "MooseX::TrackDirty::Attributes",
   "PREREQ_PM" => {
+    "Class::Load" => 0,
     "Moose" => "2.0",
     "Moose::Exporter" => 0,
     "Moose::Role" => 0,
-    "MooseX::AttributeShortcuts" => 0,
+    "Moose::Util::MetaRole" => 0,
+    "MooseX::AttributeShortcuts" => "0.008",
     "MooseX::Types::Perl" => 0,
+    "Sub::Exporter" => 0,
     "namespace::autoclean" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.000",
+  "VERSION" => "1.900",
   "test" => {
-    "TESTS" => "t/*.t"
+    "TESTS" => "t/*.t t/native-traits/*.t t/native-traits/extends/*.t"
   }
 );
 
