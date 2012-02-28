@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Class;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Class::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Class::VERSION = '2.000';
 }
 
 # ABSTRACT: Attribute metaclass helper metaclass helper trait
@@ -51,7 +51,7 @@ MooseX::TrackDirty::Attributes::Trait::Class - Attribute metaclass helper metacl
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Class - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Class - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 METHODS
 

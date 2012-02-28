@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait::VERSION = '2.000';
 }
 
 # ABSTRACT: Compatibility trait between the track-dirty and native traits
@@ -62,7 +62,7 @@ MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - Compatibility 
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 

@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role::Composite;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '2.000';
 }
 
 # ABSTRACT: Apply our application::to* traits to any composition of our role and any other
@@ -51,7 +51,7 @@ MooseX::TrackDirty::Attributes::Trait::Role::Composite - Apply our application::
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 METHODS
 

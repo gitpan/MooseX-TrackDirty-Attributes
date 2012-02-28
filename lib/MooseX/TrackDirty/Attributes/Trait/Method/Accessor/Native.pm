@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native::VERSION = '2.000';
 }
 
 # ABSTRACT: Shim trait for handling native trait's writer accessor classes
@@ -62,7 +62,7 @@ MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native - Shim trait for
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor::Native - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 

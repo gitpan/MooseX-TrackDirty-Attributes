@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Method::Accessor;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::VERSION = '2.000';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -103,7 +103,7 @@ MooseX::TrackDirty::Attributes::Trait::Method::Accessor - Track dirtied attribut
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 

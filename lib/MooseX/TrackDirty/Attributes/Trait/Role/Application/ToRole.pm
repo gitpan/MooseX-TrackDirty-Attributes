@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole::VERSION = '2.000';
 }
 
 # ABSTRACT: Application to role helper trait
@@ -64,7 +64,7 @@ MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole - Application t
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Role::Application::ToRole - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 METHODS
 

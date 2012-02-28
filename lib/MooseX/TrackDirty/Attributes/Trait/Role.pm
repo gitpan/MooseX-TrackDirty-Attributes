@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::VERSION = '1.900'; # TRIAL
+  $MooseX::TrackDirty::Attributes::Trait::Role::VERSION = '2.000';
 }
 # Dist::Zilla: +PkgVersion
 
@@ -54,7 +54,7 @@ MooseX::TrackDirty::Attributes::Trait::Role
 
 =head1 VERSION
 
-This document describes 1.900 of MooseX::TrackDirty::Attributes::Trait::Role - released February 15, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Role - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 
