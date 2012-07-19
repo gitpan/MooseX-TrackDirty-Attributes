@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Util;
 {
-  $MooseX::TrackDirty::Attributes::Util::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Util::VERSION = '2.001';
 }
 
 # ABSTRACT: Laziness -- alias functions
@@ -43,13 +43,15 @@ sub AccessorNativeTrait()   { trait_for 'Method::Accessor::Native'           }
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Util - Laziness -- alias functions
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Util - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Util - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =for Pod::Coverage trait_for application Composite ^To.*$ TrackDirtyNativeTrait AccessorNativeTrait
 

@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait::VERSION = '2.001';
 }
 
 # ABSTRACT: Compatibility trait between the track-dirty and native traits
@@ -56,13 +56,15 @@ around _native_accessor_class_for => sub {
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - Compatibility trait between the track-dirty and native traits
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Attribute::Native::Trait - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 

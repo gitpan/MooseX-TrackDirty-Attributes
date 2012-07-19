@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.001';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -38,11 +38,11 @@ Moose::Util::MetaRole::apply_metaroles(
 # debugging
 #use Smart::Comments '###', '####';
 
-has is_dirty       => (is => 'ro', isa => Identifier, lazy => 1, builder => 1);
-has original_value => (is => 'ro', isa => Identifier);
+has is_dirty       => (is => 'ro', isa => Identifier, predicate => 1, builder => 1);
+has original_value => (is => 'ro', isa => Identifier, predicate => 1);
+has cleaner        => (is => 'ro', isa => Identifier, predicate => 1);
 
 sub _build_is_dirty { shift->name . '_is_dirty' }
-#...
 
 has value_slot => (is => 'lazy', isa => 'Str');
 has dirty_slot => (is => 'lazy', isa => 'Str');
@@ -67,6 +67,7 @@ before set_value => sub {
     return;
 };
 
+sub mark_clean { shift->clear_dirty_slot(@_) }
 after clear_value => sub { shift->clear_dirty_slot(@_) };
 
 around _inline_clear_value => sub {
@@ -76,10 +77,16 @@ around _inline_clear_value => sub {
     my $mi = $self->associated_class->get_meta_instance;
 
     return $self->$orig(@_)
-        . $mi->inline_deinitialize_slot($instance, $self->dirty_slot)
-        . ';'
+        . $self->_inline_mark_clean(@_)
         ;
 };
+
+sub _inline_mark_clean {
+    my ($self, $instance) = @_;
+
+    my $mi = $self->associated_class->get_meta_instance;
+    return $mi->inline_deinitialize_slot($instance, $self->dirty_slot);
+}
 
 sub _inline_is_dirty_set {
     my $self = shift;
@@ -212,11 +219,14 @@ sub install_trackdirty_accessors {
 
     ### in install_accessors...
     $class->add_method(
-        $self->_process_accessors('is_dirty' => $self->is_dirty, $inline)
-    ) if $self->is_dirty;
+        $self->_process_accessors(is_dirty => $self->is_dirty, $inline)
+    ) if $self->has_is_dirty;
     $class->add_method(
-        $self->_process_accessors('original_value' => $self->original_value, $inline)
-    ) if $self->original_value;
+        $self->_process_accessors(original_value => $self->original_value, $inline)
+    ) if $self->has_original_value;
+    $class->add_method(
+        $self->_process_accessors(cleaner => $self->cleaner, $inline)
+    ) if $self->has_cleaner;
 
     return;
 };
@@ -252,13 +262,15 @@ sub remove_trackdirty_accessors {
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Attribute - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Attribute - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Attribute - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 

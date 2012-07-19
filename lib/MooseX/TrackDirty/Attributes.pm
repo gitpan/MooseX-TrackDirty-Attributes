@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes;
 {
-  $MooseX::TrackDirty::Attributes::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::VERSION = '2.001';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -35,13 +35,15 @@ Moose::Exporter->setup_import_methods(
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl HashRef's
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SYNOPSIS
 
@@ -84,8 +86,6 @@ again, to another value.  (The setting can be done by the constructor,
 builder, default, accessor, etc.)
 
 An attribute can be returned to a clean state by invoking its clearer.
-
-=for stopwords HashRef's
 
 =head1 CAVEAT
 
@@ -140,6 +140,17 @@ Otherwise we blow up.
 
 original_value controls what the name for the original value accessor is
 installed (returns the original value if dirty, undef otherwise):
+
+By default, we do not install an original_value accessor;
+
+If a legal method name is passed, the accessor is installed under that name;
+
+Otherwise we blow up.
+
+=item cleaner => method_name
+
+cleaner controls what the name for the cleaner accessor is
+installed (marks a dirty attribute as clean without clearing):
 
 By default, we do not install an original_value accessor;
 

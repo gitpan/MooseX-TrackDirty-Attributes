@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Method::Accessor;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Trait::Method::Accessor::VERSION = '2.001';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -19,6 +19,40 @@ use namespace::autoclean;
 
 # debugging
 #use Smart::Comments '###', '####';
+
+sub _generate_cleaner_method {
+    my $self = shift;
+    my $attr = $self->associated_attribute;
+
+    return sub {
+        confess "Clearer accessors take no arguments"
+            if @_ > 1;
+        $attr->mark_clean($_[0]);
+    };
+}
+
+sub _generate_cleaner_method_inline {
+    my $self = shift;
+    my $attr = $self->associated_attribute;
+
+    return try {
+        $self->_compile_code([
+            'sub {',
+                'if (@_ > 1) {',
+                    # XXX: this is a hack, but our error stuff is terrible
+                    $self->_inline_throw_error(
+                        '"Clearer accessors take no arguments"',
+                        'data => \@_'
+                    ) . ';',
+                '}',
+                $attr->_inline_mark_clean('$_[0]'),
+            '}',
+        ]);
+    }
+    catch {
+        confess "Could not generate inline clearer because : $_";
+    };
+}
 
 sub _generate_original_value_method {
     my $self = shift;
@@ -53,7 +87,6 @@ sub _generate_original_value_method_inline {
         confess "Could not generate inline original_value because : $_";
     };
 }
-
 
 sub _generate_is_dirty_method {
     my $self = shift;
@@ -97,13 +130,15 @@ sub _generate_is_dirty_method_inline {
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Method::Accessor - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Method::Accessor - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 

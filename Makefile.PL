@@ -16,7 +16,7 @@ my %WriteMakefileArgs = (
     "File::Temp" => 0,
     "Moose::Util" => 0,
     "Test::Moose" => 0,
-    "Test::Moose::More" => "0.005",
+    "Test::Moose::More" => "0.009",
     "Test::More" => "0.92"
   },
   "CONFIGURE_REQUIRES" => {
@@ -39,7 +39,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "2.000",
+  "VERSION" => "2.001",
   "test" => {
     "TESTS" => "t/*.t t/native-traits/*.t t/native-traits/extends/*.t"
   }

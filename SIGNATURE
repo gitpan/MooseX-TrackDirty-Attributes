@@ -1,0 +1,70 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 0f6880a482b39b684fe46d051c3d08229a84b2fe Changes
+SHA1 ea7ab09c7074d34bd5be57d39292d52aeae5cd9f INSTALL
+SHA1 cfe27b81b078c5bea151abd6e055e6790e978b48 MANIFEST
+SHA1 44fc71424bd3adcfdf0700897f6a2eac55cdea2e META.json
+SHA1 59e97f195b392fb9c867e295daf88daa191be4b5 META.yml
+SHA1 0c941db4e134c049403cbc4a6665813ee237eb7e Makefile.PL
+SHA1 ad75cc8a5c05be2c7a9a87cd350884de101713f5 README
+SHA1 9052bc840f3f5a5624b04b044a01dc5d6d63ac6c dist.ini
+SHA1 f1c900d3e5b3f9b01a1e46abb3805e8bd5d76fdc lib/MooseX/TrackDirty/Attributes.pm
+SHA1 4a642587dea1d4c98c40622dcbab8d5c27644658 lib/MooseX/TrackDirty/Attributes/Trait/Attribute.pm
+SHA1 042f9613067a007c45ec408918114b92c5b5e3d4 lib/MooseX/TrackDirty/Attributes/Trait/Attribute/Native/Trait.pm
+SHA1 b20b3ba6dbbabe4ff99354fbef88dc297b19e41e lib/MooseX/TrackDirty/Attributes/Trait/Class.pm
+SHA1 28018e89f5cac221511e38058d71f5665543d532 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor.pm
+SHA1 a71f8e4638dc60dacaa40d3b60e19286b3c02884 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor/Native.pm
+SHA1 2b2f9ec7efe3683eb98b6012844b67a6b011e5fb lib/MooseX/TrackDirty/Attributes/Trait/Role.pm
+SHA1 e2fafd325a259df3903da874d71444d9c79ef9b6 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToClass.pm
+SHA1 2c8553a3fad53f94a39b502c12ef1d9f20131808 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToInstance.pm
+SHA1 fe76b277944af33295781bbbe400f49f991ae2bb lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToRole.pm
+SHA1 bb01147d8dfa8d4cb488ace2092da77b4d64baca lib/MooseX/TrackDirty/Attributes/Trait/Role/Composite.pm
+SHA1 dc4195db2e53070395cbe2ce1797fadf979e62fd lib/MooseX/TrackDirty/Attributes/Util.pm
+SHA1 906a683f82e59edcdc3ee0c3d982dad56b55feb7 t/00-compile.t
+SHA1 7f688b2578ca9eaf2820994143b5c9165d1af43d t/000-report-versions-tiny.t
+SHA1 7b742b056fe1a8726425196e507dbab34806c7c7 t/01-moose.t
+SHA1 0559665a88bb9118512bdff03c62d27997354b1f t/02-basic.t
+SHA1 76595a96f4787435c7e4f43fb9bfff111e0a6109 t/author-pod-spell.t
+SHA1 affaea9f638ecabe62c203abb70643c468cd0f0b t/extends.t
+SHA1 ae056d64c3695a2f284affae92f3f92609aa4430 t/funcs.pm
+SHA1 cb62b8a9b807eeb3d0d229bc838a7d7a22e36c40 t/native-traits/basic.t
+SHA1 bb5a9a3aecf980f0ef79352b0d4d9a7a54b5f887 t/native-traits/extends/basic.t
+SHA1 f512de7078906f89b21ffbe6d70ac799da57d140 t/native-traits/extends/in-same-class.t
+SHA1 ee3ae121503df557d5167a0c7f28fe22f29759d3 t/native-traits/extends/reversed-in-same-class.t
+SHA1 aff06d3abd3dc5c6d0fc7323d6ac73009c3fcc43 t/native-traits/extends/reversed.t
+SHA1 d539092f19df4ea24a6c4235f49f0b3861554868 t/native-traits/role.t
+SHA1 ba13b85913ad1b1be5c390b2944efc0ff03f90af t/native-traits/to-instance.t
+SHA1 657fe19fc5e20a5f34df51a59469f01ee93ccd00 t/native-traits/trait-combined.t
+SHA1 9c3627ff37f4fd5bddc34bf46cf3359eaf76a060 t/release-consistent-version.t
+SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
+SHA1 4dc2cdda6d0333c892893063c0ac3b09879d614b t/release-has-version.t
+SHA1 b5aa47e3905a5770d7f2854584d002aa2637ac69 t/release-no-smart-comments.t
+SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
+SHA1 aab0e3a762bb7e324486b70397e094b3e781a56a t/release-pod-coverage.t
+SHA1 58274c4dd4e3b12560118f895c8c4c86a0d977ad t/release-pod-syntax.t
+SHA1 5be5f4fb1acd88b0a224a9a344381f4a7525491d t/release-portability.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQEcBAEBAgAGBQJQCGm4AAoJEOd5N1CvIgQkXyYH/3e4ztVOPpdO1gchgeuD9Axo
+dDRz9GGDlPwaEeWk1zrMDeLJWDOmXuGbZJyeIT3quI3yld0EQNaQMbB+1GdF/BHX
+6oZwuQ2oFvcAKdEb1Mj5jJkdEOdEaBo+0PFLJZuWL0ZWGsOcXKPf4UVEpuXud5th
+p1MevjzrXMiHkAhhXaVLX1RAswlIMeCnJN5Wc2gSf7jXT6lZmOaTr50ETotbIgpn
+HYqrgOtgrKWmftZZQnsvT9L4V0Tg30YJesTo7FzOeYAGiRSUm2l2gR48snrvejLL
+nGxRnFS4EihVni8emnDdmSLg7ZLdp4qG3fyJbDHvT7VInhE6nMTsdM+p8fN5GPI=
+=oDGR
+-----END PGP SIGNATURE-----

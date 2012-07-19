@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance::VERSION = '2.001';
 }
 
 # ABSTRACT: Application to instance helper trait
@@ -59,13 +59,15 @@ after apply => sub {
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance - Application to instance helper trait
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Role::Application::ToInstance - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 

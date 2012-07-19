@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role::Composite;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '2.000';
+  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '2.001';
 }
 
 # ABSTRACT: Apply our application::to* traits to any composition of our role and any other
@@ -45,13 +45,15 @@ __END__
 
 =encoding utf-8
 
+=for :stopwords Chris Weyl
+
 =head1 NAME
 
 MooseX::TrackDirty::Attributes::Trait::Role::Composite - Apply our application::to* traits to any composition of our role and any other
 
 =head1 VERSION
 
-This document describes 2.000 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released February 28, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 METHODS
 
