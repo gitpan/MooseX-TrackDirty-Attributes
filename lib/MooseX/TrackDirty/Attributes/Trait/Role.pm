@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::VERSION = '2.001';
+  $MooseX::TrackDirty::Attributes::Trait::Role::VERSION = '2.002';
 }
 # Dist::Zilla: +PkgVersion
 
@@ -42,13 +42,13 @@ around composition_class_roles => sub {
 
 !!42;
 
-
+__END__
 
 =pod
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl
+=for :stopwords Chris Weyl Gianni Ceccarelli attribute's
 
 =head1 NAME
 
@@ -56,7 +56,7 @@ MooseX::TrackDirty::Attributes::Trait::Role
 
 =head1 VERSION
 
-This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Role - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.002 of MooseX::TrackDirty::Attributes::Trait::Role - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SEE ALSO
 
@@ -88,6 +88,10 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
+=head1 CONTRIBUTOR
+
+Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2011 by Chris Weyl.
@@ -97,6 +101,3 @@ This is free software, licensed under:
   The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
-
-
-__END__

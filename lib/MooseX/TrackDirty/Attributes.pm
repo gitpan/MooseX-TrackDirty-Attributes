@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes;
 {
-  $MooseX::TrackDirty::Attributes::VERSION = '2.001';
+  $MooseX::TrackDirty::Attributes::VERSION = '2.002';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -29,13 +29,13 @@ Moose::Exporter->setup_import_methods(
 
 !!42;
 
-
+__END__
 
 =pod
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl HashRef's
+=for :stopwords Chris Weyl Gianni Ceccarelli attribute's HashRef's
 
 =head1 NAME
 
@@ -43,7 +43,7 @@ MooseX::TrackDirty::Attributes - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes version 2.001 of MooseX::TrackDirty::Attributes - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.002 of MooseX::TrackDirty::Attributes - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 SYNOPSIS
 
@@ -178,6 +178,10 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
+=head1 CONTRIBUTOR
+
+Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2011 by Chris Weyl.
@@ -187,7 +191,3 @@ This is free software, licensed under:
   The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
-
-
-__END__
-

@@ -2,8 +2,8 @@ NAME
     MooseX::TrackDirty::Attributes - Track dirtied attributes
 
 VERSION
-    This document describes version 2.001 of MooseX::TrackDirty::Attributes
-    - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
+    This document describes version 2.002 of MooseX::TrackDirty::Attributes
+    - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
 
 SYNOPSIS
         package Foo;
@@ -127,6 +127,9 @@ BUGS
 
 AUTHOR
     Chris Weyl <cweyl@alumni.drew.edu>
+
+CONTRIBUTOR
+    Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2011 by Chris Weyl.

@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Role::Composite;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '2.001';
+  $MooseX::TrackDirty::Attributes::Trait::Role::Composite::VERSION = '2.002';
 }
 
 # ABSTRACT: Apply our application::to* traits to any composition of our role and any other
@@ -41,11 +41,12 @@ around apply_params => sub {
 !!42;
 
 __END__
+
 =pod
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl
+=for :stopwords Chris Weyl Gianni Ceccarelli attribute's
 
 =head1 NAME
 
@@ -53,7 +54,7 @@ MooseX::TrackDirty::Attributes::Trait::Role::Composite - Apply our application::
 
 =head1 VERSION
 
-This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.002 of MooseX::TrackDirty::Attributes::Trait::Role::Composite - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 METHODS
 
@@ -89,6 +90,10 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
+=head1 CONTRIBUTOR
+
+Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2011 by Chris Weyl.
@@ -98,4 +103,3 @@ This is free software, licensed under:
   The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
-

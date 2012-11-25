@@ -1,5 +1,6 @@
 Changes
 INSTALL
+LICENSE
 MANIFEST
 META.json
 META.yml
@@ -41,4 +42,3 @@ t/release-no-smart-comments.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
-t/release-portability.t

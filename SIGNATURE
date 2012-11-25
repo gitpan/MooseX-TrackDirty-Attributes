@@ -14,31 +14,32 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 0f6880a482b39b684fe46d051c3d08229a84b2fe Changes
+SHA1 21aa7b33f9878f31e19242be0d31d6975f65cc91 Changes
 SHA1 ea7ab09c7074d34bd5be57d39292d52aeae5cd9f INSTALL
-SHA1 cfe27b81b078c5bea151abd6e055e6790e978b48 MANIFEST
-SHA1 44fc71424bd3adcfdf0700897f6a2eac55cdea2e META.json
-SHA1 59e97f195b392fb9c867e295daf88daa191be4b5 META.yml
-SHA1 0c941db4e134c049403cbc4a6665813ee237eb7e Makefile.PL
-SHA1 ad75cc8a5c05be2c7a9a87cd350884de101713f5 README
-SHA1 9052bc840f3f5a5624b04b044a01dc5d6d63ac6c dist.ini
-SHA1 f1c900d3e5b3f9b01a1e46abb3805e8bd5d76fdc lib/MooseX/TrackDirty/Attributes.pm
-SHA1 4a642587dea1d4c98c40622dcbab8d5c27644658 lib/MooseX/TrackDirty/Attributes/Trait/Attribute.pm
-SHA1 042f9613067a007c45ec408918114b92c5b5e3d4 lib/MooseX/TrackDirty/Attributes/Trait/Attribute/Native/Trait.pm
-SHA1 b20b3ba6dbbabe4ff99354fbef88dc297b19e41e lib/MooseX/TrackDirty/Attributes/Trait/Class.pm
-SHA1 28018e89f5cac221511e38058d71f5665543d532 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor.pm
-SHA1 a71f8e4638dc60dacaa40d3b60e19286b3c02884 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor/Native.pm
-SHA1 2b2f9ec7efe3683eb98b6012844b67a6b011e5fb lib/MooseX/TrackDirty/Attributes/Trait/Role.pm
-SHA1 e2fafd325a259df3903da874d71444d9c79ef9b6 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToClass.pm
-SHA1 2c8553a3fad53f94a39b502c12ef1d9f20131808 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToInstance.pm
-SHA1 fe76b277944af33295781bbbe400f49f991ae2bb lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToRole.pm
-SHA1 bb01147d8dfa8d4cb488ace2092da77b4d64baca lib/MooseX/TrackDirty/Attributes/Trait/Role/Composite.pm
-SHA1 dc4195db2e53070395cbe2ce1797fadf979e62fd lib/MooseX/TrackDirty/Attributes/Util.pm
+SHA1 514760f01d379ad532c49a196f1c6f7912b65556 LICENSE
+SHA1 7f03fb4ec2c23c85e8fb26a9adca56dbbfdb8fd4 MANIFEST
+SHA1 2861d0a829173ed3b8655a9cec2f12f6f24f4b1f META.json
+SHA1 bd18a91db4c75255c7bef14ced103b3b870f4393 META.yml
+SHA1 901f44668c3da28467a394dd685f537a3ed6c826 Makefile.PL
+SHA1 672c5f8f150c6c79761282393eb9b2ec7dc6db97 README
+SHA1 cbe89eaee854aa86b40e9f0e7561e56c726f9745 dist.ini
+SHA1 6fea3a2ee9d54060cb4f1dab40ef08499894e94d lib/MooseX/TrackDirty/Attributes.pm
+SHA1 e656ffa1d0a4e9c7d3e5e6dd6873cd62781a5eb8 lib/MooseX/TrackDirty/Attributes/Trait/Attribute.pm
+SHA1 f204e69eafc1907331024c795e0524801df2cf88 lib/MooseX/TrackDirty/Attributes/Trait/Attribute/Native/Trait.pm
+SHA1 cfbf9b2a9d7f70230719c8eb97e4337986759b19 lib/MooseX/TrackDirty/Attributes/Trait/Class.pm
+SHA1 f67e721ffd0f5e6f24ed56e0c1f7df92ea3edde9 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor.pm
+SHA1 538e6d07d964fa1809631bc4c6afdc39b67b12d7 lib/MooseX/TrackDirty/Attributes/Trait/Method/Accessor/Native.pm
+SHA1 c84e77534aefefa0fee6cc57c6282b570832463e lib/MooseX/TrackDirty/Attributes/Trait/Role.pm
+SHA1 c51b4cab982737e7145d30aedae8ab73767dc901 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToClass.pm
+SHA1 a796e47e669af94516d22c62eed25032c7f5af87 lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToInstance.pm
+SHA1 98abc974592de75b838c9853af11e7f958cb9bbb lib/MooseX/TrackDirty/Attributes/Trait/Role/Application/ToRole.pm
+SHA1 1b516f302a02e8096e2f23f2cb7b905dc4f83a05 lib/MooseX/TrackDirty/Attributes/Trait/Role/Composite.pm
+SHA1 2ec1ee002d162aa3a0787932844ee7622dd0d61d lib/MooseX/TrackDirty/Attributes/Util.pm
 SHA1 906a683f82e59edcdc3ee0c3d982dad56b55feb7 t/00-compile.t
-SHA1 7f688b2578ca9eaf2820994143b5c9165d1af43d t/000-report-versions-tiny.t
+SHA1 d24f34566afc1ccc5ea71885851fc0604270c2aa t/000-report-versions-tiny.t
 SHA1 7b742b056fe1a8726425196e507dbab34806c7c7 t/01-moose.t
 SHA1 0559665a88bb9118512bdff03c62d27997354b1f t/02-basic.t
-SHA1 76595a96f4787435c7e4f43fb9bfff111e0a6109 t/author-pod-spell.t
+SHA1 877502e0bbf2141d7b8f895ed56b1ec971c1e395 t/author-pod-spell.t
 SHA1 affaea9f638ecabe62c203abb70643c468cd0f0b t/extends.t
 SHA1 ae056d64c3695a2f284affae92f3f92609aa4430 t/funcs.pm
 SHA1 cb62b8a9b807eeb3d0d229bc838a7d7a22e36c40 t/native-traits/basic.t
@@ -56,15 +57,14 @@ SHA1 b5aa47e3905a5770d7f2854584d002aa2637ac69 t/release-no-smart-comments.t
 SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
 SHA1 aab0e3a762bb7e324486b70397e094b3e781a56a t/release-pod-coverage.t
 SHA1 58274c4dd4e3b12560118f895c8c4c86a0d977ad t/release-pod-syntax.t
-SHA1 5be5f4fb1acd88b0a224a9a344381f4a7525491d t/release-portability.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQEcBAEBAgAGBQJQCGm4AAoJEOd5N1CvIgQkXyYH/3e4ztVOPpdO1gchgeuD9Axo
-dDRz9GGDlPwaEeWk1zrMDeLJWDOmXuGbZJyeIT3quI3yld0EQNaQMbB+1GdF/BHX
-6oZwuQ2oFvcAKdEb1Mj5jJkdEOdEaBo+0PFLJZuWL0ZWGsOcXKPf4UVEpuXud5th
-p1MevjzrXMiHkAhhXaVLX1RAswlIMeCnJN5Wc2gSf7jXT6lZmOaTr50ETotbIgpn
-HYqrgOtgrKWmftZZQnsvT9L4V0Tg30YJesTo7FzOeYAGiRSUm2l2gR48snrvejLL
-nGxRnFS4EihVni8emnDdmSLg7ZLdp4qG3fyJbDHvT7VInhE6nMTsdM+p8fN5GPI=
-=oDGR
+iQEcBAEBAgAGBQJQsWffAAoJEOd5N1CvIgQk6DwIAIpup1htUA3mZBukb9I27mSj
+EPI4l0U1rIVvqP3g2YX3naFuH/yiX+FB8a4V6IiS3OZ3b8Q/l/yPdRbTfL6LLmni
+Z+13VdXqrAMxtsv5KhF6XhwsMlhTIB8I4DAH/iWOh5jwnkZbMEDgbGjkdYJuPFNU
+pa62WsGsgFa5oGFLPNMwIepEWvX/vWvV4Iixbrhq1K9+9vfhMzGkBmj88fq3Yzi8
+mTddy2hPS1Hfem4IK/YsvUNdpTM8lat3q/CZdjeFDyYH882DAKfZrWDhswOzVB/9
+bn8L7KFJWwipoL3rir8dcNtEPzKqwKdYwGL5GW4/OLG9u4LasAaSxN3+V1tIuyo=
+=NBjQ
 -----END PGP SIGNATURE-----

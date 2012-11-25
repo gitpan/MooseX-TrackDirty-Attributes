@@ -9,7 +9,7 @@
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute;
 {
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.001';
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.002';
 }
 
 # ABSTRACT: Track dirtied attributes
@@ -50,7 +50,10 @@ has dirty_slot => (is => 'lazy', isa => 'Str');
 sub _build_value_slot { shift->name                        }
 sub _build_dirty_slot { shift->name . '__DIRTY_TRACKING__' }
 
-override slots => sub { (super, shift->dirty_slot) };
+around slots => sub {
+    my ($orig, $self) = @_;
+    return ($self->$orig(), $self->dirty_slot);
+};
 
 before set_value => sub {
     my ($self, $instance) = @_;
@@ -199,11 +202,11 @@ sub clear_dirty_slot {
         ;
 }
 
-override accessor_metaclass => sub {
-    my $self = shift @_;
+around accessor_metaclass => sub {
+    my ($orig,$self,@args) = @_;
 
     my $classname = Moose::Meta::Class->create_anon_class(
-        superclasses => [ super ],
+        superclasses => [ $self->$orig(@args) ],
         roles        => [ 'MooseX::TrackDirty::Attributes::Trait::Method::Accessor' ],
         cache        => 1,
     )->name;
@@ -256,13 +259,13 @@ sub remove_trackdirty_accessors {
 
 !!42;
 
-
+__END__
 
 =pod
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl
+=for :stopwords Chris Weyl Gianni Ceccarelli attribute's
 
 =head1 NAME
 
@@ -270,7 +273,7 @@ MooseX::TrackDirty::Attributes::Trait::Attribute - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes version 2.001 of MooseX::TrackDirty::Attributes::Trait::Attribute - released July 19, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.002 of MooseX::TrackDirty::Attributes::Trait::Attribute - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 
@@ -311,6 +314,10 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
+=head1 CONTRIBUTOR
+
+Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
+
 =head1 COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2011 by Chris Weyl.
@@ -320,7 +327,3 @@ This is free software, licensed under:
   The GNU Lesser General Public License, Version 2.1, February 1999
 
 =cut
-
-
-__END__
-
