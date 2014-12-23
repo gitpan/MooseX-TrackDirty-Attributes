@@ -8,10 +8,10 @@
 #   The GNU Lesser General Public License, Version 2.1, February 1999
 #
 package MooseX::TrackDirty::Attributes::Trait::Attribute;
-{
-  $MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.002';
+BEGIN {
+  $MooseX::TrackDirty::Attributes::Trait::Attribute::AUTHORITY = 'cpan:RSRCHBOY';
 }
-
+$MooseX::TrackDirty::Attributes::Trait::Attribute::VERSION = '2.003';
 # ABSTRACT: Track dirtied attributes
 
 use Moose::Role;
@@ -38,11 +38,20 @@ Moose::Util::MetaRole::apply_metaroles(
 # debugging
 #use Smart::Comments '###', '####';
 
-has is_dirty       => (is => 'ro', isa => Identifier, predicate => 1, builder => 1);
+has is_dirty       => (is => 'ro', isa => Identifier, predicate => 1);
 has original_value => (is => 'ro', isa => Identifier, predicate => 1);
 has cleaner        => (is => 'ro', isa => Identifier, predicate => 1);
 
-sub _build_is_dirty { shift->name . '_is_dirty' }
+# ensure that our is_dirty option is correct, as we apparently cannot rely on
+# $self->name anymore.  *le sigh*
+after _process_options => sub {
+    my ($class, $name, $options) = @_;
+
+    $options->{is_dirty} = $name . '_is_dirty'
+        unless defined $options->{is_dirty};
+
+    return;
+};
 
 has value_slot => (is => 'lazy', isa => 'Str');
 has dirty_slot => (is => 'lazy', isa => 'Str');
@@ -263,9 +272,11 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
-=for :stopwords Chris Weyl Gianni Ceccarelli attribute's
+=for :stopwords Chris Weyl Ceccarelli Gianni attribute's
+
+=for :stopwords Wishlist flattr flattr'ed gittip gittip'ed
 
 =head1 NAME
 
@@ -273,7 +284,7 @@ MooseX::TrackDirty::Attributes::Trait::Attribute - Track dirtied attributes
 
 =head1 VERSION
 
-This document describes version 2.002 of MooseX::TrackDirty::Attributes::Trait::Attribute - released November 24, 2012 as part of MooseX-TrackDirty-Attributes.
+This document describes version 2.003 of MooseX::TrackDirty::Attributes::Trait::Attribute - released December 23, 2014 as part of MooseX-TrackDirty-Attributes.
 
 =head1 DESCRIPTION
 
@@ -298,8 +309,8 @@ L<MooseX::TrackDirty::Attributes>
 
 =head1 SOURCE
 
-The development version is on github at L<http://github.com/RsrchBoy/moosex-trackdirty-attributes>
-and may be cloned from L<git://github.com/RsrchBoy/moosex-trackdirty-attributes.git>
+The development version is on github at L<http://https://github.com/RsrchBoy/moosex-trackdirty-attributes>
+and may be cloned from L<git://https://github.com/RsrchBoy/moosex-trackdirty-attributes.git>
 
 =head1 BUGS
 
@@ -314,9 +325,24 @@ feature.
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
-=head1 CONTRIBUTOR
+=head2 I'm a material boy in a material world
 
-Gianni Ceccarelli <gianni.ceccarelli@net-a-porter.com>
+=begin html
+
+<a href="https://www.gittip.com/RsrchBoy/"><img src="https://raw.githubusercontent.com/gittip/www.gittip.com/master/www/assets/%25version/logo.png" /></a>
+<a href="http://bit.ly/rsrchboys-wishlist"><img src="http://wps.io/wp-content/uploads/2014/05/amazon_wishlist.resized.png" /></a>
+<a href="https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-trackdirty-attributes&title=RsrchBoy's%20CPAN%20MooseX-TrackDirty-Attributes&tags=%22RsrchBoy's%20MooseX-TrackDirty-Attributes%20in%20the%20CPAN%22"><img src="http://api.flattr.com/button/flattr-badge-large.png" /></a>
+
+=end html
+
+Please note B<I do not expect to be gittip'ed or flattr'ed for this work>,
+rather B<it is simply a very pleasant surprise>. I largely create and release
+works like this because I need them or I find it enjoyable; however, don't let
+that stop you if you feel like it ;)
+
+L<Flattr this|https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithub.com%2FRsrchBoy%2Fmoosex-trackdirty-attributes&title=RsrchBoy's%20CPAN%20MooseX-TrackDirty-Attributes&tags=%22RsrchBoy's%20MooseX-TrackDirty-Attributes%20in%20the%20CPAN%22>,
+L<gittip me|https://www.gittip.com/RsrchBoy/>, or indulge my
+L<Amazon Wishlist|http://bit.ly/rsrchboys-wishlist>...  If you so desire.
 
 =head1 COPYRIGHT AND LICENSE
 
